@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const date = require(__dirname + "/date.js")
 
-let items = [];
+const items = [];
 
 app.set("view engine", "ejs");
 
@@ -16,13 +16,13 @@ app.use(express.static("public"));
 
 app.get("/", function (req, res) {
   
-let day = date();
+const day = date.getDate();
 
   res.render("list", { kindOfDay: day, newListItems: items });
 });
 
 app.post("/", function (req, res) {
-  let item = req.body.newItem;
+  const item = req.body.newItem;
 
   items.push(item);
 
